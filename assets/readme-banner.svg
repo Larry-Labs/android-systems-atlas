@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="360" viewBox="0 0 1280 360" role="img" aria-labelledby="title desc">
+<title id="title">Android Systems Atlas</title><desc id="desc">A source-grounded guide from Android applications to silicon. AOSP, Framework, HAL, Linux and Qualcomm platform studies.</desc>
+<defs><pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#244344" stroke-width="0.6"/></pattern></defs>
+<rect width="1280" height="360" rx="16" fill="#102e30"/><rect width="1280" height="360" rx="16" fill="url(#grid)"/>
+<rect x="58" y="55" width="5" height="244" fill="#a8e6b5"/>
+<g font-family="Segoe UI, Helvetica, sans-serif"><text x="88" y="84" fill="#a8e6b5" font-size="14" letter-spacing="4">FROM APPLICATIONS TO SILICON</text>
+<text x="84" y="155" fill="#f5faf6" font-size="53" font-weight="700">Android Systems Atlas</text>
+<text x="88" y="204" fill="#c7d9d6" font-size="23" font-family="PingFang SC, Microsoft YaHei, sans-serif">Android 系统技术图谱</text>
+<text x="88" y="261" fill="#a8e6b5" font-size="15" letter-spacing="1">AOSP  /  FRAMEWORK  /  HAL  /  LINUX  /  QUALCOMM</text>
+<text x="88" y="290" fill="#90aeaa" font-size="14">Understand the layers. Trace the boundaries. Follow the evidence.</text>
+</g>
+<g font-family="Segoe UI, Helvetica, sans-serif" font-size="15" text-anchor="middle">
+<rect x="964" y="68" width="232" height="44" rx="7" fill="#294c4d" stroke="#7fae9b"/><text x="1080" y="96" fill="#e8f5eb">APPLICATION</text>
+<path d="M1080 113V131" stroke="#a8e6b5" stroke-width="2"/>
+<rect x="948" y="132" width="264" height="44" rx="7" fill="#294c4d" stroke="#7fae9b"/><text x="1080" y="160" fill="#e8f5eb">FRAMEWORK + SERVICES</text>
+<path d="M1080 177V195" stroke="#a8e6b5" stroke-width="2"/>
+<rect x="964" y="196" width="232" height="44" rx="7" fill="#294c4d" stroke="#7fae9b"/><text x="1080" y="224" fill="#e8f5eb">HAL + VENDOR</text>
+<path d="M1080 241V259" stroke="#a8e6b5" stroke-width="2"/>
+<rect x="948" y="260" width="264" height="44" rx="7" fill="#a8e6b5"/><text x="1080" y="288" fill="#102e30">KERNEL + HARDWARE</text></g></svg>
