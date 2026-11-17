@@ -1,0 +1,40 @@
+/* A continuous technical drawing, not a stack of flow cards. */
+.reading-layout:has(.architecture-lab){display:flex;flex-direction:column;gap:18px}
+.reading-layout:has(.architecture-lab) article{min-width:0;width:100%;order:1}
+.reading-layout:has(.architecture-lab) .on-this-page{display:flex;position:static;flex-wrap:wrap;align-items:center;gap:8px 18px;order:0;border:0;border-block:1px solid var(--line);padding:12px 0;margin:0}
+.reading-layout:has(.architecture-lab) .on-this-page>span{margin:0}.reading-layout:has(.architecture-lab) .on-this-page button{padding:4px 0;margin:0}.reading-layout:has(.architecture-lab) .aside-note{display:none}
+.audio-flow:has(.architecture-lab){background:#fff;border:1px solid #d5ddd6;border-radius:12px;padding:0;overflow:visible}
+.architecture-intro{padding:25px 28px 0}.architecture-intro h3{font-size:24px!important;margin:8px 0}.architecture-intro p{max-width:900px;font-size:14px!important;line-height:1.8}
+.map-toolbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;padding:0 28px}.lab-options{display:flex;gap:7px;flex-wrap:wrap;margin:16px 0}.lab-options button,.transport-actions button,.phase-tabs button{font-size:12px;padding:8px 12px;border:1px solid #cad5ce;background:white;border-radius:6px;line-height:1.6;color:#3c564b}.lab-options button[aria-pressed=true],.phase-tabs button[aria-pressed=true]{background:#e9f0e6;color:#174d43;border-color:#95afa0}.map-actions>.subtle-button{white-space:nowrap}
+.map-legend{display:flex;flex-wrap:wrap;gap:12px 24px;font-size:12px;padding:0 28px 18px}.map-legend .data{color:#25756b}.map-legend .control{color:#a16c2c}.map-legend .reply{color:#527d99}
+.architecture-viewport{overflow-x:auto;overscroll-behavior-x:contain;border-block:1px solid #e3e8e2;background:#fff;background-image:radial-gradient(#dce4dd 0.65px,transparent 0.65px);background-size:18px 18px;scrollbar-color:#9aae9e #eef2ec}
+.atlas-canvas{display:block;width:100%;min-width:960px;height:auto;font-family:var(--sans);overflow:visible}
+.map-band{stroke:#dbe4db;stroke-width:1;fill:#f5f8f2}.native-band{fill:#f3f6f7;stroke:#dbe2e4}.queue-band{fill:#fcfaf4;stroke:#e6dec9;stroke-dasharray:5 5}.hal-band{fill:#f3f6ed;stroke:#d9e1cc}.kernel-band{fill:#f1f2ef}.hardware-band{fill:#f5eee5;stroke:#e6daca}.map-tier-number{font:22px var(--mono);fill:#84978b}.map-tier-label{font-size:10px;letter-spacing:.5px;fill:#607569}.map-zone-label{font-size:9px;letter-spacing:.5px;fill:#77897d}.map-space-boundary{stroke:#a4b4a7;stroke-dasharray:5 5}
+.map-node{cursor:pointer;outline:none}.map-node rect{fill:#fff;stroke:#bdcfc2;stroke-width:1.2}.map-node-title{font:600 15px var(--sans);fill:#244c40}.map-node-sub{font-size:10px;fill:#60786a}.map-node:hover rect,.map-node.selected rect{fill:#e8f0df;stroke:#587d63;stroke-width:1.8}.map-node:focus-visible rect{stroke:#1d5144;stroke-width:3}
+.map-edge{cursor:pointer;outline:none;--edge:#25756b;color:var(--edge)}.map-edge.control{--edge:#a16c2c}.map-edge.reply{--edge:#527d99}.edge-hit{stroke:transparent;stroke-width:15;fill:none;pointer-events:stroke}.edge-line{stroke:var(--edge);stroke-width:1.6;fill:none;stroke-linejoin:round}.control .edge-line{stroke-dasharray:6 4}.reply .edge-line{stroke-dasharray:2 4}.edge-label{fill:var(--edge);font-size:10px;paint-order:stroke;stroke:white;stroke-width:4;stroke-linejoin:round;pointer-events:auto}.map-edge:hover .edge-line,.map-edge.selected .edge-line,.map-edge:focus-visible .edge-line{stroke-width:3}.map-edge.selected .edge-label,.map-edge:focus-visible .edge-label{font-weight:700}.map-particle{fill:var(--edge);pointer-events:none;stroke:#fff;stroke-width:1}
+.architecture-lab[data-view=data] .map-edge:not(.data){opacity:.23}.architecture-lab[data-view=control] .map-edge.data{opacity:.23}.architecture-lab .map-edge:hover,.architecture-lab .map-edge:focus-visible,.architecture-lab .map-edge.selected{opacity:1}
+.architecture-lab .lab-transport{padding:18px 28px;border-bottom:1px solid #e0e6dc;display:flex;flex-direction:column;gap:13px;align-items:stretch}.phase-tabs{display:flex;gap:7px;flex-wrap:wrap}.transport-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.transport-actions [data-flow-action=play]{background:#174d43;border-color:#174d43;color:#fff}.transport-actions button:disabled{opacity:.4;cursor:default}.lab-progress{font-size:11px;color:#708476;margin-left:auto}.map-detail{margin:0;padding:22px 28px;background:#f5f7f0;border-radius:0 0 12px 12px;min-height:160px}.map-detail h3{font-size:20px!important;margin:7px 0}.map-detail p{margin:0 0 12px!important;max-width:950px}.map-detail>a{font-size:12px;text-decoration:underline;text-underline-offset:3px}.map-scope{padding:14px 28px;margin:0!important;font-size:11px!important;color:#78887a}
+@media(max-width:650px){.architecture-intro{padding:18px 16px 0}.architecture-intro h3{font-size:20px!important}.architecture-intro p{font-size:13px!important}.map-toolbar{padding:0 16px;flex-wrap:wrap;gap:0}.map-actions>.subtle-button{margin:0 0 14px}.map-legend{padding:0 16px 15px;gap:8px 14px;font-size:11px}.atlas-canvas{min-width:960px}.architecture-lab .lab-transport{padding:16px}.phase-tabs button{font-size:11px;padding:7px 8px}.transport-actions button{font-size:11px;padding:8px 9px}.lab-progress{width:100%;margin:0}.map-detail{padding:18px 16px}.map-scope{padding:12px 16px}.reading-layout:has(.architecture-lab) .on-this-page{gap:8px 14px}.reading-layout:has(.architecture-lab) .on-this-page button{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.map-particle{display:none}.map-edge.phase-active .edge-line{stroke-width:2.5}}
+.atlas-canvas a{text-decoration:none}
+/* Full viewport dialog; the native modal keeps background controls inert. */
+body:has(.diagram-fullscreen[open]){overflow:hidden}
+dialog.diagram-fullscreen{position:fixed;inset:0;margin:0;padding:0;border:0;border-radius:0;width:100vw;max-width:none;height:100dvh;max-height:none;background:#fff;overflow:auto;overscroll-behavior:contain}
+.diagram-fullscreen::backdrop{background:#fff}
+.architecture-lab.expanded{border:0;border-radius:0;overflow:visible}
+.architecture-lab.expanded .map-toolbar{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid #d5ddd6;padding-top:8px;padding-bottom:8px;box-shadow:0 3px 12px #173f3810}
+.architecture-lab.expanded .atlas-canvas{width:100%;min-width:1400px}
+.architecture-lab.expanded .architecture-viewport{height:65vh;height:65dvh;overflow:auto;overscroll-behavior:contain}
+.architecture-lab.expanded .architecture-viewport:focus-visible{outline:2px solid #174d43;outline-offset:-2px}
+.reading-layout article .atlas-canvas a{text-decoration:none}
+.map-node-title{font-size:16px}.map-node-sub{font-size:11.5px}.edge-label{font-size:11.5px}.map-tier-label{font-size:11px}.map-zone-label{font-size:10px}
+
+.map-actions>[data-flow-action]{white-space:nowrap;border:1px solid #95afa0;background:#e9f0e6;color:#174d43;padding:8px 12px;border-radius:6px;font-size:12px}.map-actions>[data-flow-action]:disabled{opacity:.6}.motion-note{padding:0 28px;font-size:12px!important;color:#607569;margin:0 0 14px!important}
+@media(max-width:650px){.map-actions>[data-flow-action]{margin:0 12px 14px 0}.motion-note{padding:0 16px}}
+
+.map-actions{display:flex;align-items:center;gap:10px;margin:12px 0;margin-left:auto}.map-actions>.subtle-button{margin:0;padding:8px 12px;border:1px solid #cad5ce;border-radius:6px;font-size:12px;line-height:1.6}.map-actions>[data-flow-action]{margin:0;line-height:1.6}.map-actions button:focus-visible{outline:2px solid #174d43;outline-offset:3px}
+@media(max-width:650px){.map-actions{width:100%;justify-content:flex-start;margin:0 0 16px;border-top:1px solid #e3e8e2;padding-top:12px}.map-actions>[data-flow-action],.map-actions>.subtle-button{margin:0}}
+
+/* Communication channels are not tiers; device access belongs inside this HAL. */
+.queue-boundary{fill:none;stroke:#d5c9aa;stroke-width:1;stroke-dasharray:5 5}
+.hal-backend-region{fill:#fafbf6;stroke:#c6d4bc;stroke-width:1;stroke-dasharray:4 3}

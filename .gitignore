@@ -1,0 +1,18 @@
+# Local system files and runtime caches
+.DS_Store
+__pycache__/
+*.py[cod]
+node_modules/
+.cache/
+.venv/
+*.log
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+
+# Generated browser evidence and migrated source materials (kept locally)
+/artifacts/
+/output/
+/references/
