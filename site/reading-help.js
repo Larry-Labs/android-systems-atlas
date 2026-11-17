@@ -22,7 +22,7 @@ const records={
  'qread-apm-dsp':['APM / 图端点 / Graph endpoints','此框合并两类 DSP 接收方：APM 负责图管理，音频共享缓冲写请求发往图的相应端点。不是所有请求都送给同一个服务。','This groups two DSP recipient roles: APM handles graph management; shared-buffer audio writes target the corresponding graph endpoint. Requests do not all go to one service.',qcom+'q6apm.c'],
  'qread-apm-buffer':['共享音频缓冲 / Shared audio buffer','音频字节位于共享缓冲中。GPR 写请求携带地址、长度和映射句柄；本图省略固件内部图拓扑，不代表具体产品。','Audio bytes reside in shared buffers. GPR writes carry addresses, lengths and mapping handles; internal firmware topology is omitted, not a specific product implementation.',qcom+'q6apm.c']
 };
-export function readingHelp(t){return `<div class="reading-node-help" aria-live="polite"><p>${t('点击图中节点查看职责；键盘可用 Tab 选择、Enter 或空格打开。','Select a diagram node for its role; use Tab, then Enter or Space with a keyboard.')}</p></div>`;}
+export function readingHelp(){return `<div class="reading-node-help" aria-live="polite" hidden></div>`;}
 export function handleReadingHelp(target,annotate,t){
  const id=target.dataset.readingHelp;if(!id)return false;
  const item=records[id];if(!item)return false;
@@ -30,6 +30,7 @@ export function handleReadingHelp(target,annotate,t){
  root.querySelectorAll('[data-reading-help]').forEach(n=>n.setAttribute('aria-pressed',String(n===target)));
  const panel=root.querySelector('.reading-node-help');
  panel.innerHTML=`<h4>${esc(item[0])}</h4><p>${esc(t(item[1],item[2]))}</p><a href="${item[3]}" target="_blank" rel="noopener noreferrer">${esc(sourceTitle(item[3]))} ↗</a>`;
+ panel.hidden=false;
  annotate(panel);
  root.querySelectorAll('[data-reading-edge]').forEach(edge=>edge.classList.remove('is-emphasized'));
  const related=[...root.querySelectorAll(`[data-reading-edge][data-from=\"${id}\"], [data-reading-edge][data-to=\"${id}\"]`)];

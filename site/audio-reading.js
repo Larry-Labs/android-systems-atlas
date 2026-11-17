@@ -1,5 +1,5 @@
-import { readingHelp } from './reading-help.js?v=87603204e90d';
-import { renderQualcommComparison } from './qualcomm-reading.js?v=24cb8eeae32a';
+import { readingHelp } from './reading-help.js?v=445f878c6b1a';
+import { renderQualcommComparison } from './qualcomm-reading.js?v=df593f0e1ef1';
 let frames = 240;
 const escape = s => String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function periodDemo(t) {
@@ -36,7 +36,7 @@ export function renderAudioReading(t) {
  ${node('ring',40,335,200,tr('环形缓冲','Ring buffer'),tr('等待消费的 PCM','PCM awaiting consumption'))}
  ${node('dma',340,335,200,tr('DMA 引擎','DMA engine'),tr('从内存搬运样本','Transfer samples from memory'))}
  ${node('output',650,335,250,tr('音频控制器 → Codec/DAC','Controller → Codec/DAC'),'I²S → '+tr('模拟信号 → 输出','analog signal → output'))}
- </svg></div>${readingHelp(t)}
+ </svg></div>${readingHelp()}
  <div class="driver-notes"><div><span class="data">01 · ${tr('样本走哪里','Where samples go')}</span><p>${tr('环形缓冲 → DMA → 音频控制器 → Codec/DAC。驱动是软件；搬运和输出由相应硬件完成。','Ring buffer → DMA → audio controller → Codec. Drivers are software; the corresponding hardware moves and outputs samples.')}</p></div><div><span class="control">02 · ${tr('谁负责配置','Who configures it')}</span><p>${tr('ASoC 的 Machine 绑定组件；DAPM 根据路由与流活动管理电源。配置关系与样本路径并行。','ASoC Machine binds components; DAPM manages power from routes and stream activity. Configuration runs alongside the sample path.')}</p></div><div><span class="reply">03 · ${tr('反馈说明什么','What feedback means')}</span><p>${tr('驱动报告缓冲消费进展，供内核更新可用空间；不是“扬声器已经播放完”。','Drivers report buffer-consumption progress so the kernel can update available space; this does not mean the speaker has finished playing.')}</p></div></div>
  <div class="period-reading"><span class="reading-eyebrow">02 / BUFFER</span><h3>${tr('把“进展”放回缓冲里理解','Understand progress inside the buffer')}</h3><p>${tr('ALSA period 是缓冲处理的分段单位。用下面的帧数换算音频时长，更容易区分容量、通知与听到声音的时间。','An ALSA period is a buffer-processing segment. Converting frames to audio duration helps distinguish capacity, notifications and when sound is heard.')}</p><div id="period-demo">${periodDemo(t)}</div><p class="reading-caveat">${tr('这是所选缓冲配置的算术示例：5 ms / 10 ms 不保证相同节奏的中断，20 ms / 40 ms 也不是端到端延迟；实际通知机制与播放时间取决于驱动和完整输出链。','This is arithmetic for the chosen buffer example: 5 / 10 ms does not guarantee that interrupt cadence, and 20 / 40 ms is not end-to-end latency. Notifications and presentation depend on the driver and the complete output path.')}</p></div>
  <div class="driver-boundaries"><h3>${tr('哪些能通用，哪些要看设备','What generalizes, and what depends on the device')}</h3><dl><div><dt>${tr('Android 版本','Android version')}</dt><dd>${tr('AIDL / HIDL 描述 HAL 接口边界，不能据此推断内核后端。','AIDL / HIDL describe the HAL boundary; they do not identify the kernel backend.')}</dd></div><div><dt>${tr('产品实现','Product implementation')}</dt><dd>${tr('ALSA、DSP 方案取决于内核、BSP 与固件；手机或车载形态不直接决定物理链路。','ALSA and DSP choices depend on the kernel, BSP and firmware. Phone or automotive form factors do not determine the physical path.')}</dd></div><div><dt>${tr('输出设备','Output device')}</dt><dd>${tr('USB 音频经 USB 链路到外设，不能套用本例板载 I²S / Codec 连线。','USB audio reaches an external device over USB; it does not follow this onboard I²S / Codec wiring.')}</dd></div></dl></div>

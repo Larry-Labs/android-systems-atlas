@@ -1,4 +1,4 @@
-import { readingHelp } from './reading-help.js?v=87603204e90d';
+import { readingHelp } from './reading-help.js?v=445f878c6b1a';
 // Original comparison, grounded in the Linux v6.12 sources below.
 // The two lanes are alternatives, never a successive processing chain.
 const escapeHtml = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -48,7 +48,7 @@ export function renderQualcommComparison(t) {
         <text x="32" y="593" class="reading-side-note"><tspan x="32">${tr('另一套图管理模型','A separate graph model')}</tspan><tspan x="32" dy="23">${tr('不是上图的下一站','Not the next stage above')}</tspan></text>
       </svg>
     </div>
-    ${readingHelp(t)}
+    ${readingHelp()}
     <div class="reading-notes">
       <p>${tr('q6asm 是主机侧客户端，负责与 DSP 音频流服务通信；q6routing 经 ADM 配置路由，不逐块转发样本。','q6asm is the host client for the DSP stream service; q6routing configures routes through ADM rather than forwarding sample blocks.')}</p>
       <p>${tr('AudioReach 路径中，q6apm 管理处理图；GPR 共享缓冲写请求引用地址、长度和映射句柄，实际音频字节留在缓冲中。图中合并表示管理服务与图端点，不表示它们是同一个接收方。','In the AudioReach path, q6apm manages graphs; GPR shared-buffer write requests reference an address, length and mapping handle, with audio bytes in the buffer. The diagram groups management and graph endpoints without making them one recipient.')}</p>
