@@ -1,0 +1,188 @@
+[
+  {
+    "source": "/Users/xugao/Project/study/android-learning-lab/PLAN.md",
+    "destination": "references/legacy-prototype/PLAN.md",
+    "sha256": "c12f8c1b8d884cf3b792275d75ebc9edec71c28fb35a63ea6a2ad9cc37bd207f",
+    "copy_verified": true
+  },
+  {
+    "source": "/Users/xugao/Project/study/android-learning-lab/index.html",
+    "destination": "references/legacy-prototype/index.html",
+    "sha256": "750c33000ff0a1f7cfa829cc269a1bd01c3ceb9393ca10656fdd30780631d7b4",
+    "copy_verified": true
+  },
+  {
+    "source": "/Users/xugao/Project/study/android-learning-lab/catalog.js",
+    "destination": "references/legacy-prototype/catalog.js",
+    "sha256": "e41d4ef7529cfde6efc429c529839527a71864c9bb74aa80aad3e3c303ffcdd1",
+    "copy_verified": true
+  },
+  {
+    "source": "/Users/xugao/Project/study/android-learning-lab/favicon.svg",
+    "destination": "references/legacy-prototype/favicon.svg",
+    "sha256": "f83477350f6f2a77e285f135eaf86bca5d2050a58b0918b51140600acfba4d0f",
+    "copy_verified": true
+  },
+  {
+    "source": "/Users/xugao/Project/study/outputs/android-architecture-20261019/article.md",
+    "destination": "references/architecture-blog/article.md",
+    "sha256": "487d47c005c6a3d22d9e10d9d52913f7ce7abf726565968515418267285552d7",
+    "copy_verified": true
+  },
+  {
+    "source": "/Users/xugao/Project/study/outputs/android-architecture-20261019/sources.json",
+    "destination": "references/architecture-blog/sources.json",
+    "sha256": "e2cb299715de9775378cc1cc699e0eecf1ac8f1668c09bd72d75f746619cc77d",
+    "copy_verified": true
+  },
+  {
+    "source": "/Users/xugao/Project/study/outputs/android-architecture-20261019/figures.json",
+    "destination": "references/architecture-blog/figures.json",
+    "sha256": "70f78997fdb491d0ed0a769b939520543882a5ff6970e282f58f56f944c92a77",
+    "copy_verified": true
+  },
+  {
+    "source": "/Users/xugao/Project/study/outputs/android-architecture-20261019/ACCURACY-REVIEW.md",
+    "destination": "references/architecture-blog/ACCURACY-REVIEW.md",
+    "sha256": "c69abdf88c09105b9bf5cd9dd3e71a67cc27af07322b4b5a38d82480534cbf56",
+    "copy_verified": true
+  },
+  {
+    "source": "/Users/xugao/Project/study/outputs/android-architecture-20261019/VERIFICATION.md",
+    "destination": "references/architecture-blog/VERIFICATION.md",
+    "sha256": "1b9011df9b2d9883dc8847d9f93b9e64d62b3087eff594800fe072c475e6b336",
+    "copy_verified": true
+  },
+  {
+    "source": "/Users/xugao/Project/study/outputs/android-architecture-20261019/validation.json",
+    "destination": "references/architecture-blog/validation.json",
+    "sha256": "4e1884ebc2d81e375c36822b508f696982143c9e2ad4d506bd268a554a16b656",
+    "copy_verified": true
+  },
+  {
+    "source": "/Users/xugao/Project/study/outputs/android-architecture-20261019/images/illustrations/export/01-overview.png",
+    "destination": "references/architecture-blog/images/illustrations/export/01-overview.png",
+    "sha256": "64e7997051769ce2a3f07ce3ad3748ce10b7584858b9d6632c8d75392c12235d",
+    "copy_verified": true
+  },
+  {
+    "source": "/Users/xugao/Project/study/outputs/android-architecture-20261019/images/illustrations/export/01-overview.svg",
+    "destination": "references/architecture-blog/images/illustrations/export/01-overview.svg",
+    "sha256": "ad6bed78b397838597d653830b837ab2aee6684722ff4820108fa29e2b8a0fab",
+    "copy_verified": true
+  },
+  {
+    "source": "/Users/xugao/Project/study/outputs/android-architecture-20261019/images/illustrations/export/02-processes.png",
+    "destination": "references/architecture-blog/images/illustrations/export/02-processes.png",
+    "sha256": "257803fcc259bca970e9b15727ecd7ab71f750cca9528ed793228940250a4607",
+    "copy_verified": true
+  },
+  {
+    "source": "/Users/xugao/Project/study/outputs/android-architecture-20261019/images/illustrations/export/02-processes.svg",
+    "destination": "references/architecture-blog/images/illustrations/export/02-processes.svg",
+    "sha256": "9739b8a9e18c8c1c1f01a0f4b8ce313f283edab388dc541d4bcb605c70d8e398",
+    "copy_verified": true
+  },
+  {
+    "source": "/Users/xugao/Project/study/outputs/android-architecture-20261019/images/illustrations/export/03-boundaries.png",
+    "destination": "references/architecture-blog/images/illustrations/export/03-boundaries.png",
+    "sha256": "55fd58749fbef72913cd1add657df7c7dac58de12e743a19872a110ad9d232bc",
+    "copy_verified": true
+  },
+  {
+    "source": "/Users/xugao/Project/study/outputs/android-architecture-20261019/images/illustrations/export/03-boundaries.svg",
+    "destination": "references/architecture-blog/images/illustrations/export/03-boundaries.svg",
+    "sha256": "8ad433a41a5c9f6738cc859471af84b725c06ca34430d87c1f6a38ea9e49b8c4",
+    "copy_verified": true
+  },
+  {
+    "source": "/Users/xugao/Project/study/outputs/android-architecture-20261019/images/illustrations/export/04-vibrator.png",
+    "destination": "references/architecture-blog/images/illustrations/export/04-vibrator.png",
+    "sha256": "c3b390478ddf51036930c07aec1dfc4c342f9372c77c5960df02e360a85a4014",
+    "copy_verified": true
+  },
+  {
+    "source": "/Users/xugao/Project/study/outputs/android-architecture-20261019/images/illustrations/export/04-vibrator.svg",
+    "destination": "references/architecture-blog/images/illustrations/export/04-vibrator.svg",
+    "sha256": "0d3f1c428ea08460d8b3093f9014582130884b54bb67f5a596c3ece1313935c9",
+    "copy_verified": true
+  },
+  {
+    "source": "/Users/xugao/Project/study/outputs/android-architecture-20261019/images/illustrations/export/05-camera.png",
+    "destination": "references/architecture-blog/images/illustrations/export/05-camera.png",
+    "sha256": "80f6497126f4c15c7fd272f8766f23d67c0b893c9912abcc932b3708d379ce45",
+    "copy_verified": true
+  },
+  {
+    "source": "/Users/xugao/Project/study/outputs/android-architecture-20261019/images/illustrations/export/05-camera.svg",
+    "destination": "references/architecture-blog/images/illustrations/export/05-camera.svg",
+    "sha256": "9e567b365072b9e4487cd8f2e8ea2136f3dacc76571bbf6a7c7f73cbf5ba1f78",
+    "copy_verified": true
+  },
+  {
+    "source": "/Users/xugao/Project/study/outputs/android-architecture-20261019/images/illustrations/export/06-input.png",
+    "destination": "references/architecture-blog/images/illustrations/export/06-input.png",
+    "sha256": "426ef83d6ce720fc584f8771d4e744ebf84736fb48ea5f13ce148d8168cd6bc4",
+    "copy_verified": true
+  },
+  {
+    "source": "/Users/xugao/Project/study/outputs/android-architecture-20261019/images/illustrations/export/06-input.svg",
+    "destination": "references/architecture-blog/images/illustrations/export/06-input.svg",
+    "sha256": "b7fdafbf5e823d2e3047c2b4c4242c837e98fc7f9da99ffd17e3301e1d675e95",
+    "copy_verified": true
+  },
+  {
+    "source": "/Users/xugao/Project/study/outputs/android-architecture-20261019/images/illustrations/export/07-hal-evolution.png",
+    "destination": "references/architecture-blog/images/illustrations/export/07-hal-evolution.png",
+    "sha256": "1def62baa44df672e826f22f43ea1948cc6bbc73c4385df6208573d6e2a6e530",
+    "copy_verified": true
+  },
+  {
+    "source": "/Users/xugao/Project/study/outputs/android-architecture-20261019/images/illustrations/export/07-hal-evolution.svg",
+    "destination": "references/architecture-blog/images/illustrations/export/07-hal-evolution.svg",
+    "sha256": "2fa8484d3c933903a6a50f5797ccec25a8fee2330235b9719e14c94510323040",
+    "copy_verified": true
+  },
+  {
+    "source": "/Users/xugao/Project/study/outputs/android-architecture-20261019/images/illustrations/source/01-overview.drawio",
+    "destination": "references/architecture-blog/images/illustrations/source/01-overview.drawio",
+    "sha256": "66ebfa0917a038765acbec7f89979e76e3f308fdf6d73d81f93bc8d39dbacb55",
+    "copy_verified": true
+  },
+  {
+    "source": "/Users/xugao/Project/study/outputs/android-architecture-20261019/images/illustrations/source/02-processes.drawio",
+    "destination": "references/architecture-blog/images/illustrations/source/02-processes.drawio",
+    "sha256": "2d08b563eb83f3e365f33e00cd1d4500ad43a8182cdcd92daad28f2c99891cfc",
+    "copy_verified": true
+  },
+  {
+    "source": "/Users/xugao/Project/study/outputs/android-architecture-20261019/images/illustrations/source/03-boundaries.drawio",
+    "destination": "references/architecture-blog/images/illustrations/source/03-boundaries.drawio",
+    "sha256": "ecc4dd8341d7341da0685ebf6c17a313e891c04112c0558ece7e9abbdc19a021",
+    "copy_verified": true
+  },
+  {
+    "source": "/Users/xugao/Project/study/outputs/android-architecture-20261019/images/illustrations/source/04-vibrator.drawio",
+    "destination": "references/architecture-blog/images/illustrations/source/04-vibrator.drawio",
+    "sha256": "0634b25d9449cbd8fa3e3d800357e97f2df7eea78294824e2514e30f5fe6f027",
+    "copy_verified": true
+  },
+  {
+    "source": "/Users/xugao/Project/study/outputs/android-architecture-20261019/images/illustrations/source/05-camera.drawio",
+    "destination": "references/architecture-blog/images/illustrations/source/05-camera.drawio",
+    "sha256": "b53c40cee4abc906e9b3e85d8b1530e4d0627ae192fd40bcc7e88fcdbe91987b",
+    "copy_verified": true
+  },
+  {
+    "source": "/Users/xugao/Project/study/outputs/android-architecture-20261019/images/illustrations/source/06-input.drawio",
+    "destination": "references/architecture-blog/images/illustrations/source/06-input.drawio",
+    "sha256": "ac2ac67d397ef85f88982f2b2a9b63cc400dedfa1784822fb8f4aaefc21b9ec0",
+    "copy_verified": true
+  },
+  {
+    "source": "/Users/xugao/Project/study/outputs/android-architecture-20261019/images/illustrations/source/07-hal-evolution.drawio",
+    "destination": "references/architecture-blog/images/illustrations/source/07-hal-evolution.drawio",
+    "sha256": "7a63256775e9fd04b71f98ccb65f80939de96734c38bb13a563d6cf6759366f9",
+    "copy_verified": true
+  }
+]
