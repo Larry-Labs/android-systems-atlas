@@ -32,7 +32,7 @@ for lang in ['zh','en']:
 b('click','[data-flow-action=play]')
 expect("!document.querySelector('.map-particle')")
 b('click','[data-map-node=ring]')
-expect("!document.querySelector('.map-particle') && document.querySelector('.map-detail').textContent.includes('underrun')")
+expect("!document.querySelector('.map-particle') && document.querySelector('#diagram-popover .diagram-popover-body').textContent.includes('underrun')")
 b('click','[data-flow-view=control]')
 expect("!document.querySelector('.map-particle')")
 b('click','[data-flow-action=play]')

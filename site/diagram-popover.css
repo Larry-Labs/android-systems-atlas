@@ -1,0 +1,13 @@
+.diagram-popover{position:fixed;z-index:90;display:flex;flex-direction:column;box-sizing:border-box;margin:0;padding:0;border:1px solid #bdcfc2;border-radius:12px;background:#fffffc;color:#203b36;box-shadow:0 12px 40px #173f382b;font:15px/1.75 var(--sans,sans-serif);overflow:hidden;text-align:left;overflow-wrap:anywhere}
+.diagram-popover[hidden]{display:none}
+.diagram-popover>header{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-shrink:0;padding:16px 18px 12px;border-bottom:1px solid #e0e7dd;background:#f4f7ef}
+.diagram-popover>header>div{min-width:0}
+.diagram-popover .note-key{font-size:10px;letter-spacing:.08em;color:#607569}
+.diagram-popover h3{margin:3px 0 0;font:600 19px/1.4 var(--sans,sans-serif);letter-spacing:0}
+.diagram-popover-close{display:grid;place-items:center;flex-shrink:0;width:34px;height:34px;padding:0;border:0;border-radius:6px;background:transparent;color:#4a6457;font:25px/1 var(--sans,sans-serif);cursor:pointer}
+.diagram-popover-close:hover{background:#e4eddd}
+.diagram-popover-body{min-height:0;padding:16px 18px;overflow:auto;overscroll-behavior:contain}
+.diagram-popover-body p{margin:0 0 14px;font:15px/1.8 var(--sans,sans-serif)}
+.diagram-popover-body>a{display:block;font-size:12px;line-height:1.7;color:#245e4c;text-decoration:underline;text-underline-offset:3px;white-space:normal;overflow-wrap:anywhere}
+.diagram-popover button:focus-visible,.diagram-popover a:focus-visible{outline:2px solid #527b65;outline-offset:3px}
+@media(max-width:650px){.diagram-popover>header{padding:13px 14px 10px}.diagram-popover-body{padding:13px 14px}.diagram-popover-close{width:40px;height:40px}.diagram-popover h3{font-size:18px}}

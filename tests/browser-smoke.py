@@ -70,7 +70,7 @@ check('Data paths animate by default', 'document.querySelectorAll(".map-particle
 browser('click', '[data-flow-action="play"]')
 check('Pause stops motion without removing diagram', '!document.querySelector(".map-particle") && document.querySelectorAll(".map-node").length === 21')
 browser('click', '[data-map-node="ring"]')
-check('Node click exposes driver detail', 'document.querySelector("[data-map-node=ring]").getAttribute("aria-pressed") === "true" && document.querySelector(".map-detail").textContent.includes("underrun")')
+check('Node click exposes driver detail', 'document.querySelector("[data-map-node=ring]").getAttribute("aria-pressed") === "true" && document.querySelector("#diagram-popover .diagram-popover-body").textContent.includes("underrun")')
 evaluate('window.scrollTo(0, 320)')
 before = evaluate('window.scrollY')
 browser('click', '[data-lang="en"]')

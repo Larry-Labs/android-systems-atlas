@@ -1,7 +1,8 @@
-import { handleReadingHelp, observeReadingAnimations } from './reading-help.js?v=445f878c6b1a';
-import { renderAudioReading, handleAudioReading } from './audio-reading.js?v=af980bc3ca87';
+import { closeDiagramPopover } from './diagram-popover.js?v=0a1791322dc3';
+import { handleReadingHelp, observeReadingAnimations } from './reading-help.js?v=06fad34a78c7';
+import { renderAudioReading, handleAudioReading } from './audio-reading.js?v=2ac1805317c8';
 import { renderTermDetail } from './term-detail.js?v=dfb855ac100f';
-import {audioLearning, handleLearning, foundationViews} from './learning.js?v=ad79e3286b7e';
+import {audioLearning, handleLearning, foundationViews} from './learning.js?v=9afe3b42babc';
 import { createTermPopover } from './term-popover.js?v=a585f6a60181';
 import { glossary, findTerms } from './glossary.js?v=ed1e37769e9e';
 import {domains, groups, layers, sources, audioSources} from './data.js?v=ebb6141690bd';
@@ -100,6 +101,7 @@ function termDialogContent() {
  $('#term-dialog').innerHTML = `<div class="dialog-head"><span class="section-label">${t('术语解释','GLOSSARY')}</span><div class="term-dialog-actions"><button class="subtle-button" data-term-language>${t('Read in English','用中文阅读')}</button><button class="icon-button" data-close="term-dialog" aria-label="${t('关闭解释，继续阅读','Close definition and continue reading')}">×</button></div></div><h2 id="term-title">${item.term} ${item.deprecated ? `<span class="deprecated-label">${t('已弃用','Deprecated')}</span>` : ''}</h2><p class="term-full">${item.full}</p><h3>${v(item.name)}</h3><p class="term-dialog-definition">${v(item.definition)}</p>${renderTermDetail(item,t)}<div class="term-dialog-links">${external(item.source,esc(sourceLabel))}<a class="text-link" href="#/domain/${item.domain}">${t('相关领域：','Related domain: ')}${v(d.title)} ${arrow()}</a></div><p class="term-review">${t('本站依据来源整理，非官方原文 · 核对：','Atlas explanation based on sources, not an official quotation · Checked: ')}${esc(item.reviewedAt || '2026-11-08')}</p>`;
 }
 const termPopover = createTermPopover({ glossary, getLanguage: () => lang, openFull: openTerm });
+document.addEventListener('diagram-popover-close',()=>termPopover.close());
 function openTerm(id) {
  termPopover.close();
  if (!glossary.some(item => item.id === id)) return;
@@ -137,7 +139,7 @@ function annotateTerms(root) {
  }
 }
 
-function render(preserveScroll=false){termPopover.close();const scroll=window.scrollY;shell();const r=route();let html;if(r==='home')html=home();else if(r==='domains')html=domainsPage();else if(r==='differences')html=differencesPage();else if(r==='qualcomm')html=qualcommPage();else if(r==='sources')html=sourcesPage();else if(r==='glossary')html=glossaryPage();else{const d=r.startsWith('domain/')?domains.find(d=>d.id===r.split('/')[1]):null;html=d?(d.id==='audio'?audioPage(d):outlinePage(d)):`<section class="page-intro"><h1>${t('这个页面还不在图谱里','This page is not on the map')}</h1><a class="button primary" href="#/home">${t('回到架构全景','Back to the atlas')}</a></section>`;}$('#main').innerHTML=html;document.body.dataset.renderedRoute=r;annotateTerms($('#main'));observeReadingAnimations();closeMenu();if(preserveScroll)window.scrollTo(0,scroll);else window.scrollTo(0,0);}
+function render(preserveScroll=false){closeDiagramPopover();termPopover.close();const scroll=window.scrollY;shell();const r=route();let html;if(r==='home')html=home();else if(r==='domains')html=domainsPage();else if(r==='differences')html=differencesPage();else if(r==='qualcomm')html=qualcommPage();else if(r==='sources')html=sourcesPage();else if(r==='glossary')html=glossaryPage();else{const d=r.startsWith('domain/')?domains.find(d=>d.id===r.split('/')[1]):null;html=d?(d.id==='audio'?audioPage(d):outlinePage(d)):`<section class="page-intro"><h1>${t('这个页面还不在图谱里','This page is not on the map')}</h1><a class="button primary" href="#/home">${t('回到架构全景','Back to the atlas')}</a></section>`;}$('#main').innerHTML=html;document.body.dataset.renderedRoute=r;annotateTerms($('#main'));observeReadingAnimations();closeMenu();if(preserveScroll)window.scrollTo(0,scroll);else window.scrollTo(0,0);}
 function closeMenu(){document.body.classList.remove('nav-open');$('#scrim').hidden=true;$('#menu-button')?.setAttribute('aria-expanded','false');}
 function searchResults(query='') {
  const q=query.trim().toLowerCase();
@@ -147,7 +149,7 @@ function searchResults(query='') {
  const termHTML=terms.length?`<div class="results-caption">${t('术语解释','GLOSSARY')} · ${terms.length}</div>${terms.map(item=>`<button class="search-result term-search-result" data-term="${item.id}" aria-haspopup="dialog">${icon('book')}<span><strong>${item.term} · ${v(item.name)}</strong><small>${item.full}</small></span>${arrow()}</button>`).join('')}`:'';
  $('#search-results').innerHTML=domainHTML+termHTML||`<div class="empty-state">${t('没有找到相关领域或术语，试试其他关键词。','No matching domain or term. Try another keyword.')}</div>`;
 }
-function openSearch(){termPopover.close();searchResults();$('#search-input').value='';$('#search-dialog').showModal();$('#search-input').focus();}
+function openSearch(){closeDiagramPopover();termPopover.close();searchResults();$('#search-input').value='';$('#search-dialog').showModal();$('#search-input').focus();}
 document.addEventListener('click',e=>{
  const target=e.target.closest('button,a');if(!target)return;
  if(termPopover.handleClick(target))return;
