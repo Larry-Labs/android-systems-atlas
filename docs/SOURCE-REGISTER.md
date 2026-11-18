@@ -61,3 +61,7 @@ AudioTrack释义补核（2026-11-08）：英文原站本轮超时，实际读取
 ## 2026-11-09：audio整体复核
 
 [AUDIO-REVIEW-2026-11-09.md](AUDIO-REVIEW-2026-11-09.md)记录策略到AudioFlinger的控制关系、共享音轨缓冲、开流与patch区别、ALSA非mmap写入、DAPM流活动及period通知模式的复核依据。Google固定标签与Linux/TinyALSA证据分别限定适用范围。
+
+## 2026-11-18：解释职责与来源对应复核
+
+[解释审查记录](AUDIO-EXPLANATION-REVIEW-2026-11-18.md)逐项记录 69 处图内解释与 34 条术语的一致性检查。此次重新读取 AOSP main 的 AudioTrack、AudioPolicyService / Manager、AudioFlinger / Threads 关键片段及 Linux v6.12 / tinyalsa 上游机制；正文引用明确标注开发分支。Android 17 HAL 三队列、开流与适配实现仍以 2026-11-08 的三个固定标签 blob 为依据，本次重读失败与 main 交叉核对分开记录。不能把此批称为 Android 17 全链路源码审计或设备验证。

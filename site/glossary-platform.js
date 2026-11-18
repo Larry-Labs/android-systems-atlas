@@ -1211,12 +1211,12 @@ export const termEntries = {
   },
   "audioflinger": {
     "definition": {
-      "zh": "AudioFlinger 是 Android 原生音频服务中的核心组件，管理音轨处理并连接 Audio HAL。普通混音输出时，它将多条音轨的 PCM 组合成输出数据，但其他播放路径的处理方式不同。",
-      "en": "AudioFlinger is a core native audio-service component that handles tracks and connects to the Audio HAL. On ordinary mixed outputs it combines PCM tracks; other paths behave differently."
+      "zh": "AudioFlinger 是 Android 系统侧的原生音频服务组件，管理音轨、播放线程和 HAL 输出。普通 PCM 混音路径中，它读取各音轨的样本，按配置处理音量、必要的重采样与混音，再交给 HAL 输出。",
+      "en": "AudioFlinger is a native Android system audio service component managing tracks, playback threads and HAL output. On an ordinary PCM mixing path, it reads track samples, applies configured gain, required resampling and mixing, then sends output to the HAL."
     },
     "note": {
-      "zh": "AudioFlinger 不等于“所有声音都要经过的普通软件混音器”。",
-      "en": "AudioFlinger does not mean every sound must pass through ordinary software mixing."
+      "zh": "音频策略选择输出和路由，AudioFlinger 落实音轨与输出处理。普通混音只是它支持的一种处理方式。",
+      "en": "Audio policy selects outputs and routes; AudioFlinger implements track/output handling. Ordinary mixing is one supported processing arrangement."
     },
     "position": {
       "zh": "应用音轨与 Audio HAL 之间的原生音频服务侧。",
@@ -1335,12 +1335,12 @@ export const termEntries = {
       },
       {
         "q": {
-          "zh": "其他路径能直接套这张图吗？",
-          "en": "Does this diagram cover other paths?"
+          "zh": "FastMixer、direct、offload 与它是什么关系？",
+          "en": "How do FastMixer, direct and offload relate to it?"
         },
         "a": {
-          "zh": "不能。direct、offload 和 AAudio MMAP 等路径需要分别解释。",
-          "en": "No. Direct, offload and AAudio MMAP paths require separate explanations."
+          "zh": "FastMixer 是 AudioFlinger 内可选的快速混音线程；direct 和 offload 使用不同输出线程，处理方式与普通混音不同。绕过普通混音不等于绕过整个 AudioFlinger，AAudio MMAP 的数据路径也应另看。",
+          "en": "FastMixer is an optional fast mixing thread within AudioFlinger. Direct and offload use different output threads from ordinary mixing. Bypassing ordinary mixing does not imply bypassing all of AudioFlinger; AAudio MMAP data paths need separate treatment."
         }
       }
     ],
@@ -1358,7 +1358,7 @@ export const termEntries = {
         "url": "https://source.android.com/docs/core/audio/implement"
       },
       {
-        "title": "Mixer design",
+        "title": "Design for reduced latency",
         "url": "https://source.android.com/docs/core/audio/latency/design"
       },
       {
@@ -1366,8 +1366,12 @@ export const termEntries = {
         "url": "https://source.android.com/docs/core/audio/aaudio"
       },
       {
-        "title": "AudioTrack API — Google official mirror",
-        "url": "https://developer.android.google.cn/reference/android/media/AudioTrack"
+        "title": "AudioFlinger.cpp · AOSP main",
+        "url": "https://android.googlesource.com/platform/frameworks/av/+/master/services/audioflinger/AudioFlinger.cpp"
+      },
+      {
+        "title": "Threads.cpp · AOSP main",
+        "url": "https://android.googlesource.com/platform/frameworks/av/+/master/services/audioflinger/Threads.cpp"
       }
     ]
   },

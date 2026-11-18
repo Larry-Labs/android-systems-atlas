@@ -1,8 +1,8 @@
-import {termEntries as extraTerms, metadata as extraMetadata} from './glossary-audio-extra.js?v=49051bc8b4af';
+import {termEntries as extraTerms, metadata as extraMetadata} from './glossary-audio-extra.js?v=22c4d708d315';
 import {termEntries as qualcommTerms, metadata as qualcommMetadata} from './glossary-qualcomm.js?v=f01293196faf';
 import {termEntries as driverTerms, metadata as driverMetadata} from './glossary-driver.js?v=8b37b1897416';
-import { termEntries as audioTerms } from './glossary-audio.js?v=1404fbd593ac';
-import { termEntries as platformTerms } from './glossary-platform.js?v=ec9d9e5336b9';
+import { termEntries as audioTerms } from './glossary-audio.js?v=ac7d110e6bcc';
+import { termEntries as platformTerms } from './glossary-platform.js?v=79238f3dff43';
 
 // Short help and full explanations share one verified record per term.
 const metadata = [
@@ -107,6 +107,7 @@ const metadata = [
   },
   {
     "id": "fmq",
+    "reviewedAt": "2026-11-18",
     "term": "FMQ",
     "full": "Fast Message Queue",
     "name": {
@@ -229,6 +230,7 @@ const metadata = [
   },
   {
     "id": "audioflinger",
+    "reviewedAt": "2026-11-18",
     "term": "AudioFlinger",
     "full": "AudioFlinger",
     "name": {

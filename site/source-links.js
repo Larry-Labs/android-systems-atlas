@@ -10,6 +10,7 @@ const documentTitles = new Map([
  ['source.android.com/docs/automotive/audio/audio-multizone-routing', 'Multi-zone audio routing'],
  ['source.android.com/docs/core/audio/terminology', 'Audio terminology'],
  ['source.android.com/docs/core/audio/usb', 'USB digital audio'],
+ ['source.android.com/docs/core/architecture/aidl/fmq', 'Fast Message Queue with AIDL'],
  ['developer.android.com/reference/android/media/AudioTrack', 'AudioTrack'],
  ['developer.android.google.cn/reference/android/media/AudioTrack', 'AudioTrack'],
  ['developer.android.com/ndk/guides/jni-tips', 'JNI tips'],
@@ -18,7 +19,10 @@ const documentTitles = new Map([
  ['docs.kernel.org/sound/soc/machine.html', 'ASoC Machine Driver'],
  ['docs.kernel.org/sound/soc/platform.html', 'ASoC Platform Driver'],
  ['docs.kernel.org/sound/soc/codec.html', 'ASoC Codec Class Driver'],
- ['docs.kernel.org/sound/soc/dapm.html', 'Dynamic Audio Power Management for Portable Devices']
+ ['docs.kernel.org/sound/soc/dapm.html', 'Dynamic Audio Power Management for Portable Devices'],
+ ['www.alsa-project.org/alsa-doc/alsa-lib/pcm.html', 'PCM (digital audio) interface'],
+ ['github.com/tinyalsa/tinyalsa/blob/master/src/pcm.c', 'pcm.c · tinyalsa'],
+ ['github.com/tinyalsa/tinyalsa/blob/master/src/mixer.c', 'mixer.c · tinyalsa']
 ]);
 
 export function sourceTitle(href, fallback = '') {
@@ -29,7 +33,8 @@ export function sourceTitle(href, fallback = '') {
  if (['android.googlesource.com', 'github.com', 'raw.githubusercontent.com'].includes(url.hostname) && /\.(?:aidl|cpp|h|c|java|yaml)$/.test(filename)) {
   const android = url.pathname.match(/\/(android-(\d+)(?:\.\d+)*_r(\d+))\//);
   const linux = url.pathname.match(/\/torvalds\/linux\/(?:blob\/)?(v\d+(?:\.\d+)+)\//);
-  return filename + (android ? ` · Android ${android[2]} r${android[3]}` : linux ? ` · Linux ${linux[1]}` : '');
+  const main = url.hostname==='android.googlesource.com'&&/\/\+\/(?:master|refs\/heads\/main)\//.test(url.pathname);
+  return filename + (android ? ` · Android ${android[2]} r${android[3]}` : linux ? ` · Linux ${linux[1]}` : main ? ' · AOSP main' : '');
  }
  return fallback || filename || url.hostname;
 }

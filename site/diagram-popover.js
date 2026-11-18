@@ -66,8 +66,11 @@ export function showDiagramPopover(target,detail,annotate,t){
  header.append(heading,close);
  const body=document.createElement('div');body.className='diagram-popover-body';
  const text=document.createElement('p');text.textContent=detail.text;
- const source=document.createElement('a');source.href=detail.url;source.target='_blank';source.rel='noopener noreferrer';source.textContent=detail.sourceLabel+' ↗';
- body.append(text,source);panel.replaceChildren(header,body);annotate(body);
+ body.append(text);
+ for(const item of detail.sources||[{url:detail.url,title:detail.sourceLabel}]){
+  const source=document.createElement('a');source.href=item.url;source.target='_blank';source.rel='noopener noreferrer';source.textContent=item.title+' ↗';body.append(source);
+ }
+ panel.replaceChildren(header,body);annotate(body);
  anchor.setAttribute('aria-expanded','true');anchor.setAttribute('aria-controls',panel.id);
  panel.hidden=false;position();if(anchor)close.focus({preventScroll:true});
 }

@@ -18,6 +18,7 @@
 - [术语解释设计规范](docs/GLOSSARY-DESIGN.md)：原位短释义、完整词条、关系图、三问、范围与来源。
 
 - [Android17 HAL源码复核](docs/AUDIO-SOURCE-VERIFICATION.md)：固定标签、blob、关键片段和网页对应关系。
+- [音频解释逐项审查](docs/AUDIO-EXPLANATION-REVIEW-2026-11-18.md)：69 处图内解释、34 条术语的一致性、具体来源与实际验证边界。
 - [正式内容基线](docs/CONTENT-BASELINE.md)：Android17发布证据、固定源码标签与未关闭的核验缺口。
 - [首批来源登记](docs/SOURCE-REGISTER.md)：结论与来源对应、已读与待复核分开。
 - [三张入门图](docs/content/FOUNDATIONS.md)：职责、执行边界、播放场景的双语原创图稿。
@@ -47,3 +48,5 @@ references/architecture-blog/   前期架构文章、图源、导出图及核验
 音频领域现展开ALSA/ASoC直接DMA/I²S驱动例子，并注明DSP/高通公开实现边界；数据方向默认循环，保留暂停/继续与全屏查看（退出按钮或Esc返回）。核验依据见 [音频驱动核验](docs/AUDIO-DRIVER-VERIFICATION.md)。这仍是限定场景的示范章节。
 
 术语解释：现有词条提供双语短释义、架构位置、原创关系图、三个关键问答、适用范围与来源。正文悬浮保留简短解释，完整阅读在原释义弹层展开。维护规则见 [术语解释设计规范](docs/GLOSSARY-DESIGN.md)。
+
+内容结构检查：`node tests/term-content-check.mjs` 和 `node tests/audio-explanation-content-check.mjs`。它们检查条目、图入口与引用覆盖；技术准确性仍需逐项对照资料，网页呈现需另做浏览器验证。

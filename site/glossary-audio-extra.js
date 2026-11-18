@@ -2,8 +2,8 @@
 export const metadata = [
   {
     id: 'audio-patch', term: 'AudioPatch', aliases: ['audio patch', 'audio patches'],
-    full: 'Audio patch', name: { zh: '音频端口连接', en: 'Audio port connection' }, domain: 'audio', reviewedAt: '2026-11-09',
-    source: 'https://android.googlesource.com/platform/prebuilts/fullsdk/sources/android-30/+/refs/heads/androidx-room-release/android/media/AudioPatch.java'
+    full: 'Audio patch', name: { zh: '音频端口连接', en: 'Audio port connection' }, domain: 'audio', reviewedAt: '2026-11-18',
+    source: 'https://android.googlesource.com/platform/hardware/interfaces/+/refs/heads/main/audio/aidl/android/hardware/audio/core/IModule.aidl'
   },
   {
     id: 'apr', term: 'APR', full: 'Asynchronous Packet Router',
@@ -20,8 +20,8 @@ export const metadata = [
 export const termEntries = {
   'audio-patch': {
     definition: {
-      zh: 'audio patch 是 Android 音频系统中描述源端口与目标端口连接的对象，包含双方的端口配置。播放时可用它描述输出混音端到扬声器设备端的连接，帮助系统表达声音要送往哪里。',
-      en: 'An audio patch describes a connection between source and sink audio ports in Android, including their configurations. For playback, it can describe an output mix connected to a speaker device.'
+      zh: 'audio patch 是 Android 音频系统中描述源端口与目标端口连接的对象，关联双方的端口配置。播放时可用它描述输出混音端到扬声器设备端的连接；AIDL HAL 通过配置标识关联两端，而不是把音频样本装在 patch 中。',
+      en: 'An audio patch describes a connection between source and sink audio ports and associates their configurations. For playback it can connect an output mix to a speaker device. The AIDL HAL associates the ends by configuration IDs; the patch does not contain audio samples.'
     },
     note: {
       zh: '这里的 patch 不是代码补丁，也不是存放 PCM 样本的缓冲区。',
@@ -52,11 +52,12 @@ export const termEntries = {
       { q: { zh: '有 patch 就能知道样本怎么搬运吗？', en: 'Does a patch specify sample transport?' }, a: { zh: '不能。它描述端口连接；实际样本访问与硬件传输还要查看相应音频路径的实现。', en: 'No. It describes port connections; sample access and hardware transport require examining the corresponding implementation.' } }
     ],
     scope: {
-      zh: '依据 AOSP AudioPatch 类说明连接概念，图仅举播放连接；不承诺任意端口组合可连接，也不把隐藏的框架接口视为普通应用公开 API。',
-      en: 'Based on the AOSP AudioPatch class; the diagram illustrates playback only. It promises neither arbitrary port combinations nor a public app API for hidden framework interfaces.'
+      zh: '依据 AIDL Core Audio HAL 的端口配置与 patch 管理说明连接概念，图仅举播放连接。连接需满足声明的路由及能力限制；HAL 管理接口不是普通应用的公开 SDK API。',
+      en: 'Uses AIDL Core Audio HAL port-configuration and patch management to explain connections, with playback as the example. Declared routes and capabilities constrain valid connections. HAL management interfaces are not public app SDK APIs.'
     },
     sources: [
-      { title: 'AOSP AudioPatch.java: connection, port configurations and hidden API (Android 30 sources)', url: 'https://android.googlesource.com/platform/prebuilts/fullsdk/sources/android-30/+/refs/heads/androidx-room-release/android/media/AudioPatch.java' }
+      { title: 'IModule.aidl · AOSP main', url: 'https://android.googlesource.com/platform/hardware/interfaces/+/refs/heads/main/audio/aidl/android/hardware/audio/core/IModule.aidl' },
+      { title: 'AIDL Audio HAL', url: 'https://source.android.com/docs/core/audio/aidl-implement' }
     ]
   },
   apr: {

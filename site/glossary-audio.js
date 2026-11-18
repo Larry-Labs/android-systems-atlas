@@ -1323,8 +1323,8 @@ export const termEntries = {
   "fmq": {
     "reviewedAt": "2026-11-09",
     "definition": {
-      "zh": "FMQ 是进程之间通过共享内存队列交换消息的机制，用来减少频繁传输的通信开销。AIDL 音频流把命令、响应与音频字节分到不同用途的队列，双方按约定读写。",
-      "en": "FMQ exchanges messages between processes through shared-memory queues to reduce frequent-transfer overhead. AIDL audio streams use separate queues for commands, replies and audio bytes."
+      "zh": "FMQ 是进程之间通过共享内存队列交换消息的机制，用来减少频繁传输的通信开销。本页的 AIDL 非 MMAP 音频流分别用命令、响应和音频字节队列，双方按约定读写。",
+      "en": "FMQ exchanges messages between processes through shared-memory queues to reduce frequent-transfer overhead. The AIDL non-MMAP audio stream shown here uses separate command, reply and audio-byte queues."
     },
     "note": {
       "zh": "FMQ 是通信机制，不是音频格式；数据队列也不是硬件播放缓冲。",

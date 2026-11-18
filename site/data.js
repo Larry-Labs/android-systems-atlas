@@ -1,3 +1,5 @@
+import { audioExplanationSources } from './audio-explanations.js?v=344aee49d425';
+import { sourceTitle } from './source-links.js?v=12527b297d95';
 export const pair = (zh, en) => ({zh, en});
 export const groups = [pair('系统基础','System foundations'),pair('硬件与体验','Hardware & experiences'),pair('平台工程','Platform engineering')];
 export const domains = [
@@ -35,7 +37,7 @@ export const sources = [
 ];
 
 // Sources used by the audio article and its main and local diagrams.
-export const audioSources = [
+const baseAudioSources = [
   {
     "name": "AudioTrack",
     "url": "https://developer.android.com/reference/android/media/AudioTrack"
@@ -75,18 +77,6 @@ export const audioSources = [
   {
     "name": "AIDL Audio HAL",
     "url": "https://source.android.com/docs/core/audio/aidl-implement"
-  },
-  {
-    "name": "AudioPolicyService.cpp · Android 17 r1",
-    "url": "https://android.googlesource.com/platform/frameworks/av/+/refs/tags/android-17.0.0_r1/services/audiopolicy/service/AudioPolicyService.cpp"
-  },
-  {
-    "name": "AudioFlinger.cpp · Android 17 r1",
-    "url": "https://android.googlesource.com/platform/frameworks/av/+/refs/tags/android-17.0.0_r1/services/audioflinger/AudioFlinger.cpp"
-  },
-  {
-    "name": "AudioTrack.cpp · Android 17 r1",
-    "url": "https://android.googlesource.com/platform/frameworks/av/+/refs/tags/android-17.0.0_r1/media/libaudioclient/AudioTrack.cpp"
   },
   {
     "name": "StreamHalAidl.cpp · Android 17 r1",
@@ -149,3 +139,6 @@ export const audioSources = [
     "url": "https://github.com/torvalds/linux/blob/v6.12/sound/soc/qcom/qdsp6/q6asm.c"
   }
 ];
+
+// Include every diagram citation in the chapter bibliography.
+export const audioSources=[...new Map([...baseAudioSources,...audioExplanationSources.map(url=>({name:sourceTitle(url),url}))].map(item=>[item.url,item])).values()];
