@@ -6,6 +6,8 @@
 
 代码仓库：https://github.com/Larry-Labs/android-systems-atlas 。
 
+在线预览：https://larry-labs.github.io/android-systems-atlas/ 。
+
 提交约定：每完成并验证一个独立改动，及时提交相关代码与文档并同步仓库，避免跨功能积攒；遵守[项目执行约束](AGENTS.md)。
 
 运行：`python3 -m http.server 4173 --bind 127.0.0.1 --directory site`，然后访问 http://127.0.0.1:4173 。详见 [预览说明](docs/PREVIEW.md)。
