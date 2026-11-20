@@ -16,26 +16,27 @@
 
 排除完整芯片启动链、私有 BSP 拓扑、具体 SoC 的出货配置、功能安全认证结论、性能数字和设备实测。QNX 只在公开资料明确出现的车载语境中作为 Guest/HLOS 示例，不把用户线程中的“HQX”直接扩写成产品事实。
 
-## 3. 主图草稿
+## 3. 虚拟机 I/O 主图
 
 ### 图名
 
-虚拟机 I/O：纵向看权限边界，横向看设备协作
+虚拟机 I/O：从 Guest 到物理设备
 
 ### 画布分区
 
 | 纵向边界 | 图中对象 | 解释重点 |
 | --- | --- | --- |
-| EL0 | Guest App / Host service client | 应用或用户态请求 |
-| EL1 | Guest kernel、Host OS、VMM/Resource Manager | 操作系统、宿主策略和设备后端 |
-| EL2 | Hypervisor | vCPU、Stage-2 内存隔离、虚拟中断、VM 间通信基础 |
-| EL3 | Secure monitor / firmware | 安全启动和更高权限固件，不能简化成普通 Hypervisor 服务 |
+| EL0 | Guest 应用、VMM、本例的宿主 VirtIO 后端 | 发起 I/O、管理虚拟机、读取队列 |
+| EL1 | Guest 内核及 VirtIO 前端、宿主驱动 | 系统调用、提交请求及访问设备 |
+| EL2 | Hypervisor | vCPU 与 Stage-2 内存隔离 |
+| EL3 | 安全监控固件 | 平台启动与安全服务 |
+| 独立于异常级 | 共享队列及缓冲区、物理设备 | 通信载体与实际设备分别标示 |
 
 ### 横向关系
 
-Guest App → Guest kernel → VirtIO front-end → shared queue / shared memory → VMM 或宿主后端 → Host driver → hardware。
+本例请求路径为 Guest 应用 → Guest 内核 → VirtIO 前端 → 共享队列及缓冲区 → 宿主用户态 VirtIO 后端 → 宿主驱动 → 物理设备。
 
-Guest kernel → Hypervisor 的控制接口表示 VM 运行所需的陷入、虚拟 CPU 和内存保护关系。VMM/Resource Manager → Hypervisor 表示创建、启动和资源配置的管理关系。返回线表示完成、事件或错误反馈，不写成扬声器、摄像头等设备已经完成物理呈现。
+VMM 经宿主内核发起创建 VM，Hypervisor 提供 Stage-2 映射与隔离，平台启动单独标示。宿主后端写回完成状态，Guest 前端再从队列取回。描述符记录缓冲区地址、长度和读写方向，具体设备可采用其他后端、通知和启动机制。
 
 ## 4. 版本和平台差异
 
@@ -61,6 +62,7 @@ Guest kernel → Hypervisor 的控制接口表示 VM 运行所需的陷入、虚
 | [Armv8-A virtualization](https://developer.arm.com/-/media/Arm%20Developer%20Community/PDF/Learn%20the%20Architecture/Armv8-A%20virtualization.pdf) | EL0–EL3、EL2 虚拟化控制、Stage-2、Type-1/hosted hypervisor关系 | 2019 Armv8-A架构学习资料，不代表具体 Android 或 Qualcomm 产品 |
 | [AOSP Why AVF?](https://source.android.com/docs/core/virtualization/whyavf) | Android 13 引入 AVF 安全虚拟化，AVF 与 TrustZone 的关系 | 解释目标和背景，不是设备支持清单 |
 | [AOSP AVF architecture](https://source.android.com/docs/core/virtualization/architecture) | pKVM、EL2、pVM firmware、crosvm、pVM启动关系 | AOSP参考实现，设备厂商还需满足集成条件 |
+| [Virtual I/O Device (VIRTIO) Version 1.2](https://docs.oasis-open.org/virtio/virtio/v1.2/virtio-v1.2.html) | 第 2.7–2.8 节描述符、缓冲区和完成通知 | 协议依据，具体后端位置和硬件由产品实现决定 |
 | [AOSP AVF overview](https://source.android.com/docs/core/virtualization) | AVF、pVM、Microdroid、VirtualizationService、crosvm术语 | 仅支持具备 AVF 的设备，不能推断所有 Android 设备都有 |
 | [AOSP AAOS SDV](https://source.android.com/docs/automotive/sdv) | Android 17 `26Q2` 的 SDV 多 VM/VirtIO 执行配置 | SDV公开架构，不代表所有量产车载产品 |
 | [Qualcomm Linux virtualization](https://docs.qualcomm.com/bundle/publicresource/topics/80-70022-3/virtualization.html) | Gunyah职责、默认 EL1/EL2路径、KVM条件与限制 | Qualcomm Linux custom BSP，不能推断 Android出货BSP |
@@ -74,5 +76,5 @@ Guest kernel → Hypervisor 的控制接口表示 VM 运行所需的陷入、虚
 - 稿件：本文件已完成首版范围和证据边界。
 - 页面：已接入 `virtualization` 路由，完成双语正文、横纵一体主图、路径筛选、数据方向动画、暂停/继续、全屏和节点旁解释。
 - 术语：已接入 15 个双语条目，正文中的 EL2、VirtIO、VMM、AVF、pKVM、pVM、Gunyah、QHEE 等入口可进入完整释义。
-- 浏览器：已用本地静态服务检查中文/英文切换、节点解释、全屏进入/退出、动画暂停/继续和控制台错误。手机视口、键盘逐项回焦和完整术语条目回归待下一批继续。
+- 浏览器：主图改版后的双语尺寸、手机图内滚动、全屏、动效与键盘验收见 [11 月 21 日主图复验](HYPERVISOR-VALIDATION-2026-11-20.md#2026-11-21-主图复验)。
 - 设备：未做实体设备、Android 编译或 Qualcomm BSP 实测。

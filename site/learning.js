@@ -1,5 +1,5 @@
 import { audioNodeExplanations, audioEdgeExplanations } from './audio-explanations.js?v=344aee49d425';
-import { showDiagramPopover, closeDiagramPopover, isDiagramPopoverAnchor } from './diagram-popover.js?v=cb7fe399353a';
+import { showDiagramPopover, closeDiagramPopover, isDiagramPopoverAnchor } from './diagram-popover.js?v=6e59a476be74';
 // One connected diagram: vertical responsibilities, horizontal collaboration.
 import { sourceTitle } from './source-links.js?v=12527b297d95';
 const pair=(zh,en)=>({zh,en});

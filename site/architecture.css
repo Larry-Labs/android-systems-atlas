@@ -29,11 +29,11 @@ dialog.diagram-fullscreen{position:fixed;inset:0;margin:0;padding:0;border:0;bor
 .reading-layout article .atlas-canvas a{text-decoration:none}
 .map-node-title{font-size:16px}.map-node-sub{font-size:11.5px}.edge-label{font-size:11.5px}.map-tier-label{font-size:11px}.map-zone-label{font-size:10px}
 
-.map-actions>[data-flow-action]{white-space:nowrap;border:1px solid #95afa0;background:#e9f0e6;color:#174d43;padding:8px 12px;border-radius:6px;font-size:12px}.map-actions>[data-flow-action]:disabled{opacity:.6}.motion-note{padding:0 28px;font-size:12px!important;color:#607569;margin:0 0 14px!important}
-@media(max-width:650px){.map-actions>[data-flow-action]{margin:0 12px 14px 0}.motion-note{padding:0 16px}}
+.map-actions>:is([data-flow-action],[data-hyper-action]){white-space:nowrap;border:1px solid #95afa0;background:#e9f0e6;color:#174d43;padding:8px 12px;border-radius:6px;font-size:12px}.map-actions>:is([data-flow-action],[data-hyper-action]):disabled{opacity:.6}.motion-note{padding:0 28px;font-size:12px!important;color:#607569;margin:0 0 14px!important}
+@media(max-width:650px){.map-actions>:is([data-flow-action],[data-hyper-action]){margin:0 12px 14px 0}.motion-note{padding:0 16px}}
 
-.map-actions{display:flex;align-items:center;gap:10px;margin:12px 0;margin-left:auto}.map-actions>.subtle-button{margin:0;padding:8px 12px;border:1px solid #cad5ce;border-radius:6px;font-size:12px;line-height:1.6}.map-actions>[data-flow-action]{margin:0;line-height:1.6}.map-actions button:focus-visible{outline:2px solid #174d43;outline-offset:3px}
-@media(max-width:650px){.map-actions{width:100%;justify-content:flex-start;margin:0 0 16px;border-top:1px solid #e3e8e2;padding-top:12px}.map-actions>[data-flow-action],.map-actions>.subtle-button{margin:0}}
+.map-actions{display:flex;align-items:center;gap:10px;margin:12px 0;margin-left:auto}.map-actions>.subtle-button{margin:0;padding:8px 12px;border:1px solid #cad5ce;border-radius:6px;font-size:12px;line-height:1.6}.map-actions>:is([data-flow-action],[data-hyper-action]){margin:0;line-height:1.6}.map-actions button:focus-visible{outline:2px solid #174d43;outline-offset:3px}
+@media(max-width:650px){.map-actions{width:100%;justify-content:flex-start;margin:0 0 16px;border-top:1px solid #e3e8e2;padding-top:12px}.map-actions>:is([data-flow-action],[data-hyper-action]),.map-actions>.subtle-button{margin:0}}
 
 /* Communication channels are not tiers; device access belongs inside this HAL. */
 .queue-boundary{fill:none;stroke:#d5c9aa;stroke-width:1;stroke-dasharray:5 5}

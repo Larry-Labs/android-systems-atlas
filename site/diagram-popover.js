@@ -28,7 +28,7 @@ function position(){
  const left=viewport?.offsetLeft||0,top=viewport?.offsetTop||0;
  const width=viewport?.width||document.documentElement.clientWidth,height=viewport?.height||window.innerHeight;
  const right=left+width,bottom=top+height,margin=12,gap=12;
- const target=anchor.dataset.mapEdge?anchor.querySelector('text')||anchor:anchor.querySelector('rect')||anchor;
+ const target=(anchor.dataset.mapEdge || anchor.dataset.hyperEdge)?anchor.querySelector('text')||anchor:anchor.querySelector('rect')||anchor;
  const raw=target.getBoundingClientRect();
  const rect={left:Math.max(raw.left,left),right:Math.min(raw.right,right),top:Math.max(raw.top,top),bottom:Math.min(raw.bottom,bottom)};
  for(let parent=anchor.parentElement;parent&&parent!==document.body;parent=parent.parentElement){

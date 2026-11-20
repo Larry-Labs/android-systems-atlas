@@ -1,5 +1,5 @@
 import { audioLocalExplanations } from './audio-explanations.js?v=344aee49d425';
-import { showDiagramPopover, closeDiagramPopover, isDiagramPopoverAnchor } from './diagram-popover.js?v=cb7fe399353a';
+import { showDiagramPopover, closeDiagramPopover, isDiagramPopoverAnchor } from './diagram-popover.js?v=6e59a476be74';
 // Contextual explanations for grouped teaching nodes, distinct from glossary definitions.
 import { sourceTitle } from './source-links.js?v=12527b297d95';
 export function handleReadingHelp(target,annotate,t){
