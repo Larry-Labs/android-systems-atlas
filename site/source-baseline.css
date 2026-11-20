@@ -1,0 +1,2 @@
+.source-baseline{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:0 0 35px;padding:20px 22px;border:1px solid var(--line);border-radius:6px;background:#edf2e5}.source-baseline>div{display:flex;flex-direction:column;gap:5px}.source-baseline-label{font:9px var(--mono);letter-spacing:1px;color:#7e8e72}.source-baseline strong{font-size:17px;font-weight:600}.source-baseline small{font-size:10px;color:var(--muted)}
+@media(max-width:600px){.source-baseline{grid-template-columns:1fr;padding:18px}.source-baseline strong{font-size:16px}}
