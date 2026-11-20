@@ -1,7 +1,7 @@
 import { closeDiagramPopover } from './diagram-popover.js?v=6e59a476be74';
 import { handleReadingHelp, observeReadingAnimations } from './reading-help.js?v=f30fd9b75f31';
 import { renderAudioReading, handleAudioReading } from './audio-reading.js?v=2ac1805317c8';
-import { renderHypervisorReading, handleHypervisorReading } from './hypervisor-reading.js?v=ae6af38581dd';
+import { renderHypervisorReading, handleHypervisorReading } from './hypervisor-reading.js?v=ab489b1814b4';
 import { renderTermDetail } from './term-detail.js?v=dfb855ac100f';
 import {audioLearning, handleLearning, foundationViews} from './learning.js?v=ae04001981f1';
 import { createTermPopover } from './term-popover.js?v=a585f6a60181';

@@ -1,5 +1,13 @@
 #hypervisor-reading{background:#fff;border:1px solid #d5ddd6;border-radius:12px;container-type:inline-size}
 .hypervisor-lab .hyper-canvas{min-width:710px;overflow:hidden}
+.hyper-canvas .hyper-band{stroke:#a1b1a8;stroke-width:1.35}
+.hyper-canvas .hyper-tier-divider{stroke:#a1b1a8}
+.hyper-canvas .map-tier-number{font-size:21px;font-weight:600;fill:#24493e}
+.hyper-canvas .map-tier-label,.hyper-canvas .hyper-column{font-size:12px;fill:#40564d}
+.hyper-canvas .hyper-column{font-weight:600}
+.hyper-canvas .hyper-channel{stroke:#a18c5e;stroke-width:1.4}
+.hyper-canvas .hyper-channel-title{font-size:14px;font-weight:700;fill:#67532e}
+.hyper-canvas [data-hyper-layer="hardware"] .map-tier-number{font-size:15px}
 .hypervisor-lab .map-node,.hypervisor-lab .map-edge{text-decoration:none}
 .hypervisor-lab .architecture-viewport:focus-visible{outline:2px solid #174d43;outline-offset:-2px}
 .hypervisor-lab .hyper-scroll-note{display:none}

@@ -10,31 +10,39 @@ const aospSource = 'https://source.android.com/docs/core/virtualization/architec
 const qSource = 'https://docs.qualcomm.com/bundle/publicresource/topics/80-70022-3/virtualization.html';
 const gunyahSource = 'https://github.com/quic/gunyah-hypervisor';
 
+const layers = [
+  ['el0', 48, 104, 'EL0', pair('用户态','Userspace'), ''],
+  ['el1', 186, 182, 'EL1', pair('内核态','Kernel'), 'native-band'],
+  ['el2', 501, 76, 'EL2', pair('虚拟化','Virtualization'), 'hal-band'],
+  ['el3', 601, 76, 'EL3', pair('安全监控','Secure monitor'), 'kernel-band'],
+  ['hardware', 701, 76, pair('硬件','Hardware'), pair('物理设备','Physical I/O'), 'hardware-band']
+];
+
 const nodes = [
   ['guest-app', 146, 76, 221, 60, pair('Guest 应用','Guest app'), pair('发起设备请求','Starts device I/O')],
-  ['guest-os', 146, 209, 221, 60, pair('Guest 内核','Guest kernel'), pair('处理系统调用','Handles system calls')],
-  ['virtio', 146, 338, 221, 60, pair('VirtIO 前端','VirtIO frontend'), pair('Guest 内核驱动','Guest kernel driver')],
-  ['vmm', 434, 76, 199, 60, 'VMM', pair('管理虚拟机生命周期','Manages the VM lifecycle')],
+  ['guest-os', 146, 198, 221, 60, pair('Guest 内核','Guest kernel'), pair('处理系统调用','Handles system calls')],
+  ['virtio', 146, 298, 221, 60, pair('VirtIO 前端','VirtIO frontend'), pair('Guest 内核驱动','Guest kernel driver')],
+  ['vmm', 434, 76, 199, 60, 'VMM', pair('宿主用户态 · 管理虚拟机','Host userspace · VM manager')],
   ['host-os', 735, 76, 218, 60, pair('VirtIO 后端','VirtIO backend'), pair('本例位于宿主用户态','Host userspace in this example')],
-  ['shared', 435, 338, 200, 60, pair('共享队列与缓冲区','Shared queue and buffers'), pair('描述符引用数据缓冲区','Descriptors refer to buffers')],
-  ['driver', 735, 338, 218, 60, pair('宿主驱动','Host driver'), pair('通过内核访问真实设备','Kernel access to real devices')],
-  ['hypervisor', 434, 484, 199, 60, 'Hypervisor', pair('虚拟 CPU 与内存隔离','Virtual CPUs and isolation')],
-  ['firmware', 434, 611, 199, 60, pair('安全监控固件','Secure monitor'), pair('平台启动与安全服务','Platform boot / services')],
-  ['hardware', 735, 700, 218, 60, pair('物理设备','Physical device'), pair('设备控制器与 I/O','Device controller and I/O')]
+  ['shared', 435, 404, 200, 60, pair('共享队列与缓冲区','Shared queue and buffers'), pair('描述符引用数据缓冲区','Descriptors refer to buffers')],
+  ['driver', 735, 298, 218, 60, pair('宿主驱动','Host driver'), pair('通过内核访问真实设备','Kernel access to real devices')],
+  ['hypervisor', 434, 509, 199, 60, 'Hypervisor', pair('虚拟 CPU 与内存隔离','Virtual CPUs and isolation')],
+  ['firmware', 434, 609, 199, 60, pair('安全监控固件','Secure monitor'), pair('平台启动与安全服务','Platform boot / services')],
+  ['hardware', 735, 709, 218, 60, pair('物理设备','Physical device'), pair('设备控制器与 I/O','Device controller and I/O')]
 ].map(([id,x,y,w,h,title,sub]) => ({id,x,y,w,h,title,sub}));
 
 const edges = [
-  ['app-call','data','M256 136 V209',pair('系统调用','System call'),310,180,'guest-app','guest-os'],
-  ['os-virtio','data','M256 269 V338',pair('设备请求','Device request'),310,308,'guest-os','virtio'],
-  ['virtio-shared','data','M367 352 H435',pair('提交描述符','Post descriptors'),400,327,'virtio','shared'],
-  ['shared-backend','data','M635 352 H675 V96 H735',pair('读取队列与缓冲区','Read queue and buffers'),760,174,'shared','host-os'],
-  ['backend-driver','data','M844 136 V338',pair('宿主 I/O 请求','Host I/O request'),904,256,'host-os','driver'],
-  ['driver-hardware','data','M844 398 V700',pair('设备访问','Device access'),888,521,'driver','hardware'],
-  ['vm-create','control','M434 106 H405 V514 H434',pair('经宿主内核创建 VM','Create VM via host kernel'),500,186,'vmm','hypervisor'],
-  ['memory','control','M534 484 V398',pair('Stage-2 映射','Stage-2 mapping'),595,447,'hypervisor','shared'],
-  ['secure-boot','control','M534 611 V544',pair('平台启动与配置','Platform boot / setup'),608,582,'firmware','hypervisor'],
-  ['reply','reply','M735 121 H699 V382 H635',pair('写回完成状态','Write completion'),685,413,'host-os','shared'],
-  ['reply-guest','reply','M435 382 H367',pair('取回完成状态','Read completion'),394,420,'shared','virtio']
+  ['app-call','data','M256 136 V198',pair('系统调用','System call'),307,177,'guest-app','guest-os'],
+  ['os-virtio','data','M256 258 V298',pair('设备请求','Device request'),310,282,'guest-os','virtio'],
+  ['virtio-shared','data','M367 316 H398 V419 H435',pair('提交描述符','Post descriptors'),335,388,'virtio','shared'],
+  ['shared-backend','data','M635 419 H675 V96 H735',pair('读取队列与缓冲区','Read queue and buffers'),770,176,'shared','host-os'],
+  ['backend-driver','data','M844 136 V298',pair('宿主 I/O 请求','Host I/O request'),903,251,'host-os','driver'],
+  ['driver-hardware','data','M844 358 V379 H961 V689 H844 V709',pair('驱动访问设备','Driver accesses device'),874,396,'driver','hardware'],
+  ['vm-create','control','M434 106 H416 V539 H434',pair('经宿主内核创建 VM','Create VM via host kernel'),494,175,'vmm','hypervisor'],
+  ['memory','control','M534 509 V464',pair('Stage-2 映射','Stage-2 mapping'),599,493,'hypervisor','shared'],
+  ['secure-boot','control','M534 609 V569',pair('平台启动与配置','Platform boot / setup'),611,594,'firmware','hypervisor'],
+  ['reply','reply','M735 121 H699 V449 H635',pair('写回完成状态','Write completion'),705,470,'host-os','shared'],
+  ['reply-guest','reply','M435 449 H378 V342 H367',pair('取回完成状态','Read completion'),320,457,'shared','virtio']
 ].map(([id,kind,path,label,lx,ly,from,to]) => ({id,kind,path,label,lx,ly,from,to}));
 
 const explanations = {
@@ -73,21 +81,21 @@ function graph(t) {
   const r = value => escape(read(value,t));
   return `<svg class="atlas-canvas hyper-canvas" viewBox="0 0 980 790" xmlns="http://www.w3.org/2000/svg" aria-labelledby="hyper-title hyper-desc">
     <title id="hyper-title">${t('虚拟机 I/O：权限边界与设备协作','VM I/O: privilege boundaries and device cooperation')}</title>
-    <desc id="hyper-desc">${t('依权限级别分行。应用调用 Guest 内核，VirtIO 前端和宿主后端通过共享队列交互，后端经宿主驱动访问设备。EL2 Hypervisor 提供隔离。实线表示请求，虚线表示控制，点线表示返回。','Rows indicate exception levels. The app calls the guest kernel. The VirtIO frontend and host backend use a shared queue, and the backend accesses the device through the host driver. The EL2 hypervisor provides isolation. Solid lines show requests, dashed lines control, dotted lines replies.')}</desc>
+    <desc id="hyper-desc">${t('依权限级别分行，跨层通道与物理硬件单列。应用调用 Guest 内核，VirtIO 前端和宿主后端通过共享队列交互，后端经宿主驱动访问设备。EL2 Hypervisor 提供隔离。实线表示请求，虚线表示控制，点线表示返回。','Rows mark exception levels, a shared channel, and physical hardware. The app calls the guest kernel. The VirtIO frontend and host backend use a shared queue, and the backend accesses the device through the host driver. The EL2 hypervisor provides isolation. Solid lines show requests, dashed lines control, dotted lines replies.')}</desc>
     <defs>${Object.entries(edgeColors).map(([kind,color])=>`<marker id="hyper-${kind}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="${color}" stroke-width="1.5"/></marker>`).join('')}</defs>
-    <text x="17" y="29" class="map-tier-label">${t('权限级别','EXCEPTION LEVEL')}</text>
-    <text x="146" y="29" class="map-zone-label">${t('Guest 侧 · 虚拟机','GUEST · VIRTUAL MACHINE')}</text>
-    <text x="434" y="29" class="map-zone-label">${t('虚拟化管理与共享通道','VM MANAGEMENT / SHARED CHANNEL')}</text>
-    <text x="735" y="29" class="map-zone-label">${t('宿主与设备侧','HOST / DEVICE SIDE')}</text>
-    <rect x="124" y="46" width="846" height="106" rx="12" class="map-band"/>
-    <rect x="124" y="193" width="266" height="233" rx="12" class="map-band native-band"/>
-    <rect x="722" y="193" width="248" height="233" rx="12" class="map-band native-band"/>
-    <rect x="422" y="470" width="225" height="87" rx="12" class="map-band hal-band"/>
-    <rect x="422" y="598" width="225" height="85" rx="12" class="map-band kernel-band"/>
-    <rect x="722" y="687" width="247" height="85" rx="12" class="map-band hardware-band"/>
-    <rect x="421" y="316" width="228" height="94" rx="10" class="map-band queue-band"/>
-    ${[[86,'EL0',pair('用户态','USERSPACE')],[234,'EL1',pair('内核态','KERNEL')],[505,'EL2',pair('虚拟化','VIRTUALIZATION')],[630,'EL3',pair('安全固件','SECURE MONITOR')]].map(([y,n,label])=>`<text x="17" y="${y}" class="map-tier-number">${n}</text><text x="17" y="${y+23}" class="map-tier-label">${r(label)}</text>`).join('')}
-    <text x="907" y="677" text-anchor="middle" class="map-zone-label">${t('物理硬件','PHYSICAL HARDWARE')}</text>
+    <text x="30" y="29" class="hyper-column">${t('权限级别','Exception level')}</text>
+    <text x="146" y="29" class="hyper-column">${t('Guest 侧 · 虚拟机','Guest · virtual machine')}</text>
+    <text x="434" y="29" class="hyper-column">${t('虚拟化管理与通信','VM management and communication')}</text>
+    <text x="735" y="29" class="hyper-column">${t('宿主与设备侧','Host and device')}</text>
+    ${layers.map(([id,y,h,title,label,band])=>`<g data-hyper-layer="${id}">
+      <rect x="16" y="${y}" width="${id==='el2'||id==='el3'?924:954}" height="${h}" rx="11" class="map-band ${band} hyper-band"/>
+      <path d="M127 ${y+10}V${y+h-10}" class="hyper-tier-divider"/>
+      <text x="30" y="${y+h/2-1}" class="map-tier-number">${r(title)}</text>
+      <text x="30" y="${y+h/2+19}" class="map-tier-label">${r(label)}</text>
+    </g>`).join('')}
+    <rect x="426" y="394" width="218" height="80" rx="10" class="map-band queue-band hyper-channel"/>
+    <text x="30" y="429" class="hyper-channel-title">${t('跨层通道','Shared channel')}</text>
+    <text x="30" y="449" class="map-tier-label">${t('Guest ↔ 宿主','Guest ↔ host')}</text>
     ${edges.map(e=>{
       const related = selectionType==='edge' ? selected===e.id : e.from===selected||e.to===selected;
       return `<g role="button" tabindex="0" aria-haspopup="dialog" aria-expanded="false" aria-label="${r(e.label)}" aria-pressed="${selectionType==='edge'&&selected===e.id}" data-hyper-edge="${e.id}" class="map-edge ${e.kind} ${related?'selected':''}"><path d="${e.path}" class="edge-hit"/><path d="${e.path}" class="edge-line" marker-end="url(#hyper-${e.kind})"/><text x="${e.lx}" y="${e.ly}" class="edge-label" text-anchor="middle">${r(e.label)}</text>${playing&&e.kind==='data'&&mode!=='control'?`<circle r="3.4" class="map-particle"><animateMotion dur="3.5s" repeatCount="indefinite" path="${e.path}"/></circle>`:''}</g>`;
