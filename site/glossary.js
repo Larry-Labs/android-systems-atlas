@@ -3,6 +3,7 @@ import {termEntries as qualcommTerms, metadata as qualcommMetadata} from './glos
 import {termEntries as driverTerms, metadata as driverMetadata} from './glossary-driver.js?v=8b37b1897416';
 import { termEntries as audioTerms } from './glossary-audio.js?v=ac7d110e6bcc';
 import { termEntries as platformTerms } from './glossary-platform.js?v=79238f3dff43';
+import { metadata as hypervisorMetadata, termEntries as hypervisorTerms } from './glossary-hypervisor.js?v=1';
 
 // Short help and full explanations share one verified record per term.
 const metadata = [
@@ -252,8 +253,8 @@ const metadata = [
     "source": "https://source.android.com/docs/automotive/start/what_automotive"
   }
 ];
-const content = {...audioTerms,...platformTerms,...driverTerms,...qualcommTerms,...extraTerms};
-export const glossary = [...metadata,...driverMetadata,...qualcommMetadata,...extraMetadata].map(item => ({...item,...content[item.id]}));
+const content = {...audioTerms,...platformTerms,...driverTerms,...qualcommTerms,...extraTerms,...hypervisorTerms};
+export const glossary = [...metadata,...driverMetadata,...qualcommMetadata,...extraMetadata,...hypervisorMetadata].map(item => ({...item,...content[item.id]}));
 
 export function findTerms(query = '') {
  const q = query.trim().toLocaleLowerCase();
