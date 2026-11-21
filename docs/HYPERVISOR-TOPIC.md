@@ -40,7 +40,7 @@ VMM 经宿主内核发起创建 VM，Hypervisor 提供 Stage-2 映射与隔离�
 
 ## 4. 版本和平台差异
 
-设备形态区采用三张局部图。IoT 对照单系统直接运行和多虚拟机共享 SoC。车载白皮书图 9 的播放样本从 GVM 经共享内存送往 DSP，PVM 的音频服务参与控制。AAOS SDV 另画并列的 Core、Media、IVI 执行配置、跨 VM 通信与 VirtIO 运行环境。
+设备形态区采用两张局部图。IoT 对照单系统直接运行和多虚拟机共享 SoC。车载展示 AAOS SDV 中并列的 Core、Media、IVI 执行配置、跨 VM 通信和 VirtIO 运行环境。
 
 | 维度 | 本专题采用的结论 | 证据范围 |
 | --- | --- | --- |

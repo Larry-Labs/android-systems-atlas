@@ -41,12 +41,7 @@
 .scenario-canvas .scenario-platform rect{fill:#edf3eb}
 .scenario-zone{font-size:13px;font-weight:650;fill:#40564d}
 .scenario-line-label{font-size:12px;font-weight:600;fill:#4c6459}
-.scenario-relation,.scenario-control,.scenario-data{fill:none;stroke-linejoin:round;stroke-width:1.8}
-.scenario-relation{stroke:#638074}
-.scenario-control{stroke:#a16c2c;stroke-dasharray:6 4}
-.scenario-data{stroke:#25756b}
-.scenario-control-text{fill:#85561e}
-.scenario-data-text{fill:#247064}
+.scenario-relation{fill:none;stroke:#638074;stroke-linejoin:round;stroke-width:1.8}
 @container (width >= 925px){
  .scenario-figure{grid-template-columns:minmax(235px,1fr) minmax(630px,2.55fr);align-items:center;gap:18px}
 }

@@ -41,5 +41,9 @@
 
 ### IoT 与车载局部图复验（2026-11-21）
 
+以下为三图版的历史验证记录。
+
 - 复核 Qualcomm/Dolby 白皮书图 9 的控制与样本走线，以及 [AAOS SDV system architecture](https://source.android.com/docs/automotive/sdv/sdv-system-architecture) 的虚拟设备与跨 VM 通信关系。
 - 用 Chromium 核对三张图的中英文和 1440、1024、768、390、320px。图中文字在画布与节点内，窄屏溢出局限在图框内。检查高通音频服务节点的点击、空格、来源链接与 Esc 回焦。
+
+用户随后要求移除车载音频案例。复验中英文的 1440px 和 390px，章节只显示 IoT 对照和 AAOS SDV 分工图，SDV Core 节点可打开解释并通过 Esc 回焦。
