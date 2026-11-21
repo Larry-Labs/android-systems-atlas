@@ -138,3 +138,5 @@ html[lang=en] .nav-item{font-size:12px}html[lang=en] .layer-main strong{font-siz
 
 /* Reference titles stay complete and wrap inside their explanation panel. */
 .map-detail>a,.audio-reading .reading-node-help>a,.term-dialog-links>a{min-width:0;white-space:normal;overflow-wrap:anywhere}
+
+@media(max-width:360px){.top-left{min-width:0}.top-actions{flex-shrink:0}.breadcrumb strong{overflow-wrap:anywhere}}

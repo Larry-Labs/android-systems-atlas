@@ -38,3 +38,8 @@
 
 - EL0–EL3 改用带层名的横向分区。共享队列独立标为跨层通道，驱动至硬件的请求线从 EL2、EL3 边框外走线。
 - 在 Chrome 内核的应用内浏览器核对中英文和 1440、1024、768、390px，检查组件归属、标签裁切或覆盖、全屏、键盘释义和 Esc 退出。减少动态效果时未生成流动光点。
+
+### IoT 与车载局部图复验（2026-11-21）
+
+- 复核 Qualcomm/Dolby 白皮书图 9 的控制与样本走线，以及 [AAOS SDV system architecture](https://source.android.com/docs/automotive/sdv/sdv-system-architecture) 的虚拟设备与跨 VM 通信关系。
+- 用 Chromium 核对三张图的中英文和 1440、1024、768、390、320px。图中文字在画布与节点内，窄屏溢出局限在图框内。检查高通音频服务节点的点击、空格、来源链接与 Esc 回焦。
